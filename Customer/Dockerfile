@@ -1,3 +1,3 @@
-FROM node:6.2-wheezy
+FROM node:onbuild
 # replace this with your application's default port
 EXPOSE 8888
