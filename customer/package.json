@@ -4,14 +4,16 @@
   "description": "Customer service for movie shop",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/.bin/jasmine-node spec",
     "setup": "npm install && ./node_modules/typings/dist/bin.js install",
     "dev": "./node_modules/typescript/bin/tsc -w"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "jasmine-node": "^1.14.5",
+    "request": "^2.72.0"
   },
   "devDependencies": {
     "jasmine": "^2.4.1",
