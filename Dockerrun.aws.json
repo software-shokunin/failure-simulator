@@ -1,0 +1,18 @@
+{
+  "AWSEBDockerrunVersion": "1",
+  "Image": {
+    "Name": "jameslewis/customer-test",
+    "Update": "true"
+  },
+  "Ports": [
+    {
+      "ContainerPort": "8888"
+    }
+  ],
+  "Volumes": [
+    {
+      "HostDirectory": "/usr/src/app",
+      "ContainerDirectory": "/etc/customer"
+    }
+  ]
+}
