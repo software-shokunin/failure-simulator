@@ -7,7 +7,7 @@ delete_container() {
   docker rm -f $container
 }
 
-if [[ $1 = 'dev' ]]
+if [[ $1 = 'start' ]]
 then
   delete_container
   docker run -p $port:$port -it -v "$PWD":/usr/src/app --name $container $image bash -c 'npm install; npm start'
