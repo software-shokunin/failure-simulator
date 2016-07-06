@@ -2,10 +2,10 @@
   "name": "customer",
   "version": "1.0.0",
   "description": "Customer service for movie shop",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
     "test": "./node_modules/.bin/jasmine",
-    "start": "node src/app.js"
+    "start": "node src/server.js"
   },
   "author": "",
   "license": "MIT",
@@ -15,6 +15,7 @@
     "request": "^2.72.0"
   },
   "devDependencies": {
-    "jasmine": "^2.4.1"
+    "jasmine": "^2.4.1",
+    "supertest": "^1.2.0"
   }
 }

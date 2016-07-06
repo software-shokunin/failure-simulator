@@ -1,13 +1,18 @@
-let request    = require('request');
-const BASE_URL = "http://localhost:3000/"
+'use strict';
+
+const supertest = require('supertest');
+const app       = require('../src/app');
+const BASE_URL  = "http://localhost:3000/"
 
 describe('Hello World Server', () => {
 	describe('GET /', () => {
-		it('returns status code 200', () => {
-			request.get(BASE_URL, (error, response, body) => {
-				expect(response.statusCode).toBe(200);
-				done();
-			});
+		it('returns status code 200', (done) => {
+			supertest(app)
+				.get('/')
+				.expect(200)
+				.end((err, res) => {
+					err ? done.fail(err) : done();
+				});
 		});
 	});
 });
