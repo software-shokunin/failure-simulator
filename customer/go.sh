@@ -2,25 +2,27 @@ image=failure-simulator-node
 container=failure-simulator-customer
 port=8888
 
-delete_container() {
-  docker stop $container
-  docker rm -f $container
+stop_container() {
+  docker ps | grep $container && docker stop $container && docker rm -f $container
+}
+
+delete_untagged_images() {
+  docker images --no-trunc -aqf "dangling=true" | xargs docker rmi
 }
 
 if [[ $1 = 'start' ]]
 then
-  delete_container
+  stop_container
   docker run -p $port:$port -it -v "$PWD":/usr/src/app --name $container $image bash -c 'npm install; npm start'
   exit
 elif [[ $1 = 'test' ]]
 then
-  delete_container
+  stop_container
   docker run -p $port:$port -it -v "$PWD":/usr/src/app --name $container $image bash -c 'npm install; npm test'
 elif [[ $1 = 'build' ]]
 then
-  delete_container
-  docker rmi -f $image
-  docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
+  stop_container
+  delete_untagged_images
   docker build -t $image -f Dockerfile .
   exit
 else
