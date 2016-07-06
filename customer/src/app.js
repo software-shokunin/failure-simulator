@@ -1,9 +1,8 @@
 'use strict';
 
 const express = require('express');
-let app       = express();
-let routes    = require('./routes/index');
+const app     = express();
 
-app.use('/', routes);
+app.use('/', require('./routes/customer'));
 
 module.exports = app;
