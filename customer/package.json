@@ -4,7 +4,7 @@
   "description": "Customer service for movie shop",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/.bin/jasmine-node spec",
+    "test": "./node_modules/.bin/jasmine",
     "start": "node src/app.js"
   },
   "author": "",
@@ -15,7 +15,6 @@
     "request": "^2.72.0"
   },
   "devDependencies": {
-    "jasmine-node": "^1.14.5",
     "jasmine": "^2.4.1"
   }
 }
