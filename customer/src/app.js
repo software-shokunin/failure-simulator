@@ -9,5 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Customer API service running on port: ${PORT}`);
+  const colors  = require('colors/safe');
+  const message = `Customer API service running on port: ${PORT}`;
+  console.log(colors.green.underline(message));
 });
