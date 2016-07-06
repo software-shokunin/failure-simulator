@@ -3,10 +3,9 @@
 const express = require('express');
 const PORT    = process.env.CUSTOMER_PORT || 8888;
 let app       = express();
+let routes    = require('./routes/index');
 
-app.get('/', (req, res) => {
-	res.send('Customer is king');
-});
+app.use('/', routes);
 
 app.listen(PORT, () => {
 	const colors  = require('colors/safe');
