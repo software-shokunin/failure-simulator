@@ -3,7 +3,7 @@ container=failure-simulator-customer
 port=8888
 
 stop_container() {
-  docker ps | grep $container && docker stop $container && docker rm -f $container
+  docker ps -a | grep $container && docker stop $container && docker rm -f $container
 }
 
 delete_untagged_images() {
