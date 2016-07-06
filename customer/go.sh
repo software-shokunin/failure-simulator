@@ -14,7 +14,8 @@ then
   exit
 elif [[ $1 = 'test' ]]
 then
-  echo "TBD"
+  delete_container
+  docker run -p $port:$port -it -v "$PWD":/usr/src/app --name $container $image bash -c 'npm install; npm test'
 elif [[ $1 = 'build' ]]
 then
   delete_container
