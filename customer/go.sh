@@ -22,9 +22,9 @@ then
 elif [[ $1 = 'build' ]]
 then
   stop_container
-  delete_untagged_images
   docker build -t $image -f Dockerfile .
+  delete_untagged_images
   exit
 else
-  echo "Invalid parameter"
+  echo "Valid commands: start|test|build"
 fi
