@@ -20,6 +20,7 @@ elif [[ $1 = 'build' ]]
 then
   delete_container
   docker rmi -f $image
+  docker rmi $(docker images --filter "dangling=true" -q --no-trunc)
   docker build -t $image -f Dockerfile .
   exit
 else
