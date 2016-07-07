@@ -12,7 +12,7 @@ router.get('/:id', (req, res, next) => {
 	if(!customer) {
 		res.sendStatus(404);
 		return
-	} 
+	}
 	res.status(302).send(customer);
 });
 

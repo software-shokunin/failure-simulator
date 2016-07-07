@@ -36,7 +36,7 @@ describe("customers", () => {
 			}, done)
 		});
 
-		it('returns 401 when customer not found', (done) => {
+		it('returns 404 when customer not found', (done) => {
 			request(app)
 			.get('/abc')
 			.expect(404, done);
