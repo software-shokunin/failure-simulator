@@ -11,8 +11,13 @@ describe("customers", () => {
 				.get('/1')
 				.expect(302)
 				.expect({
-					"id" : "1",
-					"name": "Customer 1"
+					"id"   : "1",
+					"name" : "Customer 1",
+					"paymentDetails": {
+								"number" : "4000 0000 0000 0002",
+								"ccv"    : "123",
+								"expiry" : "11/20"
+					}
 				}, done)
 		});
 
@@ -21,8 +26,13 @@ describe("customers", () => {
 				.get('/2')
 				.expect(302)
 				.expect({
-					"id" : "2",
-					"name": "Customer 2"
+					"id"  : "2",
+					"name": "Customer 2",
+					"paymentDetails": {
+								"number" : "5100 0000 0000 0008",
+								"ccv"    : "567",
+								"expiry" : "11/20"
+					}
 				}, done)
 		});
 
