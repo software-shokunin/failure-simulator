@@ -2,7 +2,7 @@
   "name": "customer",
   "version": "1.0.0",
   "description": "Customer service for movie shop",
-  "main": "server.js",
+  "main": "src/server.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha",
     "start": "node src/server.js"
