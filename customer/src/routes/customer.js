@@ -9,11 +9,11 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req, res, next) => {
 	let customer = customers[req.params.id];
-	if(customer) {
-		res.status(302).send(customer);
-	} else {
+	if(!customer) {
 		res.sendStatus(404);
-	}
+		return
+	} 
+	res.status(302).send(customer);
 });
 
 module.exports = router;
