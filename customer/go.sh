@@ -7,7 +7,7 @@ then
   docker-compose down
 elif [[ $1 = 'test' ]]
 then
-  docker-compose up -d
+  docker-compose up --build -d
   docker-compose exec app npm test
   docker-compose down
 else
