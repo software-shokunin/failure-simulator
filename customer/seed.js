@@ -1,13 +1,14 @@
 'use strict';
 
 const mongoose = require('mongoose');
+const seed     = require('./seed.json');
 mongoose.connect('mongodb://database/customer');
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
   let customerSchema = mongoose.Schema({
-    id: Number,
+    id: mongoose.Schema.Types.ObjectId,
     name: String,
     paymentDetails: {
       number: String,
@@ -17,21 +18,12 @@ db.once('open', () => {
   });
 
   let Customer = mongoose.model('Customer', customerSchema);
-
-  let c1 = new Customer({
-    "name": "Customer 1",
-    "paymentDetails": {
-      "number" : "4000 0000 0000 0002",
-      "ccv"    : "123",
-      "expiry" : "11/20"
-    }
+  Customer.collection.insert(seed, (err, c) => {
+      if(err) {
+        console.error(err);
+      } else {
+        console.log('%d customers were successfully inserted', c.result.n);
+      }
+      db.close();
   });
-
-  c1.save((err, c) => {
-    if (err) {
-        return console.error(err);
-    }
-    console.log('Seed complete');
-    db.close();
-  })
 });
