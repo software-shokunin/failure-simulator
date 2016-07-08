@@ -6,7 +6,6 @@ mongoose.connect('mongodb://database/customer');
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', () => {
-  console.log("chamber of secrets is open!!");
   let customerSchema = mongoose.Schema({
     id: Number,
     name: String,
@@ -32,6 +31,7 @@ db.once('open', () => {
     if (err) {
         return console.error(err);
     }
-    console.log('Saved!');
+    console.log('Seed complete');
+    db.close();
   })
 });
